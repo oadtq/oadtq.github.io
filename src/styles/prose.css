@@ -1,0 +1,200 @@
+/* ============================================================
+   prose.css — blog CONTENT typography only
+   Mirrors turbopuffer.com/blog: Space Grotesk body + headings,
+   JetBrains Mono for code. 16px / 1.75 base (Tailwind `prose`).
+   Scoped to .prose so the rest of the site keeps IBM Plex Mono.
+   ============================================================ */
+
+.prose {
+  /* fonts local to blog content — do not leak to the rest of the site */
+  --f-prose: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --f-prose-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo,
+    Consolas, monospace;
+
+  font-family: var(--f-prose);
+  font-size: 1rem; /* 16px — turbopuffer prose base */
+  line-height: 1.75;
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: normal;
+}
+
+.prose > *:first-child {
+  margin-top: 0;
+}
+
+.prose > *:last-child {
+  margin-bottom: 0;
+}
+
+.prose p {
+  margin: 1.25em 0;
+}
+
+/* ---------- headings (Space Grotesk, turbopuffer weights) ---------- */
+
+.prose h2 {
+  font-family: var(--f-prose);
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 1.3333333;
+  color: var(--fg);
+  margin: 2em 0 1em;
+}
+
+.prose h3 {
+  font-family: var(--f-prose);
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--fg);
+  margin: 1.6em 0 0.6em;
+}
+
+.prose h4 {
+  font-family: var(--f-prose);
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--fg);
+  margin: 1.5em 0 0.5em;
+}
+
+/* ---------- links ---------- */
+
+.prose a {
+  color: var(--fg);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--line-dotted);
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  text-decoration-color: var(--fg);
+}
+
+.prose strong {
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.prose em {
+  font-style: italic;
+}
+
+/* ---------- lists ---------- */
+
+.prose ul,
+.prose ol {
+  margin: 1.25em 0;
+  padding-left: 1.625em;
+}
+
+.prose ul {
+  list-style: disc;
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose li {
+  margin: 0.5em 0;
+  padding-left: 0.375em;
+}
+
+.prose li::marker {
+  color: var(--muted);
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin: 0.75em 0;
+}
+
+/* ---------- blockquote ---------- */
+
+.prose blockquote {
+  margin: 1.6em 0;
+  padding: 0.2em 0 0.2em 1em;
+  border-left: 3px solid var(--line);
+  color: var(--muted);
+  font-style: normal;
+}
+
+.prose blockquote p {
+  margin: 0.5em 0;
+}
+
+/* ---------- code (JetBrains Mono) ---------- */
+
+.prose code {
+  font-family: var(--f-prose-mono);
+  font-size: 0.875em;
+  font-weight: 500;
+  background: var(--line);
+  padding: 0.12em 0.36em;
+  border-radius: 4px;
+  color: var(--fg);
+}
+
+.prose pre {
+  font-family: var(--f-prose-mono);
+  background: #171717;
+  color: #e5e5e5;
+  padding: 18px 20px;
+  margin: 1.6em 0;
+  overflow-x: auto;
+  font-size: 0.875em;
+  line-height: 1.7143;
+  border-radius: 6px;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-weight: 400;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ---------- table ---------- */
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.6em 0;
+  font-size: 0.875em;
+  line-height: 1.5;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  font-weight: 600;
+  background: var(--line);
+}
+
+/* ---------- misc ---------- */
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 2.4em 0;
+}
+
+.prose img {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  margin: 1.8em auto;
+}

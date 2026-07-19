@@ -1,0 +1,430 @@
+/* ============================================================
+   oad.tq — minimal design, inspired by ivan.codes
+   IBM Plex Mono everywhere, #fafafa background, dotted leaders
+   ============================================================ */
+
+:root {
+  --bg: #fafafa;
+  --fg: #171717;
+  --muted: #737373;
+  --line: #e5e5e5;
+  --line-dotted: #d4d4d4;
+  --paper: #ffffff;
+
+  --f-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --wrap: 1240px;
+  --gutter: 24px;
+}
+
+/* ---------- reset / base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+body {
+  font-family: var(--f-mono);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  text-align: left;
+}
+
+strong {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+/* ---------- utilities ---------- */
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.hide {
+  display: none !important;
+}
+
+main {
+  padding-bottom: 120px;
+}
+
+/* ---------- page grid: left sidebar + content ---------- */
+
+.page-grid {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 40px;
+  padding-top: 24px;
+}
+
+.side {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+}
+
+.side-block + .side-block {
+  margin-top: 32px;
+}
+
+.side-title {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+/* categories */
+.cats {
+  list-style: none;
+}
+
+.cat {
+  display: block;
+  width: 100%;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--fg);
+  padding: 4px 0;
+  transition: opacity 0.12s ease;
+}
+
+.cat:hover {
+  opacity: 0.6;
+}
+
+.cat.active {
+  opacity: 1;
+}
+
+.cat .n {
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-left: 2px;
+}
+
+.subcats {
+  list-style: none;
+  margin: 2px 0 8px 12px;
+  padding-left: 10px;
+  border-left: 1px solid var(--line);
+}
+
+.subcats .cat {
+  font-size: 0.8rem;
+  padding: 3px 0;
+  color: var(--muted);
+}
+
+.subcats .cat:hover {
+  color: var(--fg);
+  opacity: 1;
+}
+
+/* sidebar on note pages: category labels + note links */
+.cat-static {
+  cursor: default;
+  color: var(--fg);
+}
+
+.subcat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding: 8px 0 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.subcat-label .n {
+  font-size: 0.7rem;
+}
+
+.note-link {
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--muted);
+  padding: 3px 0;
+  transition: color 0.12s ease;
+}
+
+.note-link:hover {
+  color: var(--fg);
+}
+
+.note-link.active {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+/* ---------- home page ---------- */
+
+.home-main {
+  max-width: 680px;
+}
+
+.home-brand {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--fg);
+  margin-bottom: 12px;
+  transition: opacity 0.12s ease;
+}
+
+.home-brand:hover {
+  opacity: 0.6;
+}
+
+.home-section {
+  margin-top: 40px;
+}
+
+.home-section:first-of-type {
+  margin-top: 0;
+}
+
+.home-lead {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--fg);
+  max-width: 62ch;
+}
+
+.home-lead a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--line-dotted);
+  text-underline-offset: 3px;
+}
+
+.home-lead a:hover {
+  text-decoration-color: var(--fg);
+}
+
+.home-bio {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 62ch;
+  margin-top: 16px;
+}
+
+.home-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* ---------- minimal rows with leaders (ivan.codes style) ---------- */
+
+.section-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.row-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leader-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 4px 0;
+  color: var(--fg);
+  transition: opacity 0.12s ease;
+}
+
+.leader-row:hover {
+  opacity: 0.6;
+}
+
+.leader-row .label {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.leader-row .leader {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  min-width: 24px;
+  transform: translateY(-3px);
+}
+
+.leader-row .meta {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.leader-row .meta span + span {
+  margin-left: 10px;
+}
+
+/* ---------- contact chips ---------- */
+
+.chip {
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 7px 12px;
+  background: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+a.chip:hover {
+  border-color: var(--fg);
+  color: var(--fg);
+}
+
+.chip .sq {
+  color: var(--fg);
+  font-size: 0.55rem;
+}
+
+/* ---------- note page ---------- */
+
+.article-col {
+  max-width: 800px;
+}
+
+.crumb-home {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+  transition: color 0.12s ease;
+}
+
+.crumb-home:hover {
+  color: var(--fg);
+}
+
+.note-title {
+  font-size: clamp(1.5rem, 3.6vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.15;
+  max-width: 28ch;
+}
+
+.note-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 18px;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.note-meta .tags {
+  display: flex;
+  gap: 10px;
+  color: var(--muted);
+}
+
+.prose {
+  margin-top: 32px;
+}
+
+/* ---------- prose ----------
+   Blog CONTENT typography now lives in src/styles/prose.css,
+   imported only on the note page ([slug].astro), so the rest of
+   the site keeps its IBM Plex Mono styling untouched.
+   ------------------------------------------------------------ */
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1023px) {
+  .page-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .side {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --gutter: 18px;
+  }
+
+  .page-grid {
+    padding-top: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

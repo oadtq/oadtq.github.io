@@ -1,0 +1,66 @@
+---
+// Blog-content fonts + typography (turbopuffer style), scoped to this page.
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/600.css';
+import '@fontsource/space-grotesk/700.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '../../styles/prose.css';
+
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import SideNav from '../../components/SideNav.astro';
+import { formatDate, getNotes, readingTime } from '../../lib/notes';
+import { SITE } from '../../consts';
+
+export async function getStaticPaths() {
+  const notes = await getNotes();
+  return notes.map((note) => ({
+    params: { slug: note.id },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+
+const minutes = readingTime(note);
+
+---
+
+<Base title={note.data.title} description={note.data.description} type="article">
+  <div class="wrap page-grid">
+    <SideNav activeId={note.id} />
+
+    <article class="article-col">
+      <header class="note-head">
+        <a href="/" class="crumb-home" aria-label="Back to home">
+          {SITE.name}/
+        </a>
+        <h1 class="note-title">{note.data.title}</h1>
+        <div class="note-meta">
+          <span>{formatDate(note.data.date)}</span>
+          <span>·</span>
+          <span>~{minutes} min read</span>
+          {
+            note.data.tags.length > 0 && (
+              <>
+                <span>·</span>
+                <span class="tags">
+                  {note.data.tags.map((t) => (
+                    <span>#{t}</span>
+                  ))}
+                </span>
+              </>
+            )
+          }
+        </div>
+      </header>
+
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+  </div>
+</Base>

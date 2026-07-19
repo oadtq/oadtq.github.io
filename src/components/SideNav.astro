@@ -1,0 +1,57 @@
+---
+import { getNotes, groupNotes } from '../lib/notes';
+
+interface Props {
+  activeId?: string;
+}
+
+const { activeId } = Astro.props;
+
+const notes = await getNotes();
+const groups = groupNotes(notes);
+const total = notes.length;
+---
+
+<aside class="side">
+  <div class="side-block">
+    <div class="side-title">Categories</div>
+    <ul class="cats">
+      <li>
+        <a class="cat" href="/">
+          All <span class="n">[{total}]</span>
+        </a>
+      </li>
+      {
+        groups.map((g) => (
+          <li>
+            <span class="cat cat-static">
+              {g.category} <span class="n">[{g.count}]</span>
+            </span>
+            <ul class="subcats">
+              {g.subs.map((s) => (
+                <>
+                  {s.subcategory && (
+                    <li class="subcat-label">
+                      {s.subcategory} <span class="n">[{s.notes.length}]</span>
+                    </li>
+                  )}
+                  {s.notes.map((n) => (
+                    <li>
+                      <a
+                        href={`/notes/${n.id}/`}
+                        class:list={['note-link', { active: n.id === activeId }]}
+                        aria-current={n.id === activeId ? 'page' : undefined}
+                      >
+                        {n.data.title}
+                      </a>
+                    </li>
+                  ))}
+                </>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</aside>

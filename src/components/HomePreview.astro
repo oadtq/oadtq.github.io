@@ -1,0 +1,77 @@
+---
+import { getNotes } from '../lib/notes';
+import { PRODUCTS, SITE } from '../consts';
+import SideNav from './SideNav.astro';
+
+const notes = await getNotes();
+
+const formatMonthYear = (d: Date) =>
+  d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+---
+
+<div class="wrap page-grid">
+  <SideNav />
+
+  <div class="home-main">
+    <a href="/" class="home-brand">{SITE.name}</a>
+
+    <section class="home-section">
+      <p class="home-lead">
+        I'm {SITE.realName} (reverse of oad). I build open-source projects in agentic AI and inference
+        optimization to make LLMs more useful and less expensive to run. In a previous life, I did AI research at
+        <a href="https://www.qualcomm.com/research/artificial-intelligence" target="_blank" rel="noopener">Qualcomm AI Research</a>
+        and <a href="https://www.vinai.io/" target="_blank" rel="noopener">VinAI</a>.
+      </p>
+      <div class="home-links">
+        <a class="chip" href={SITE.socials.github} target="_blank" rel="noopener">
+          <span class="sq">■</span> GitHub ↗
+        </a>
+        <a class="chip" href={SITE.socials.linkedin} target="_blank" rel="noopener">
+          <span class="sq">■</span> LinkedIn ↗
+        </a>
+        <a class="chip" href={SITE.socials.scholar} target="_blank" rel="noopener">
+          <span class="sq">■</span> Scholar ↗
+        </a>
+        <a class="chip" href={`mailto:${SITE.email}`}>
+          <span class="sq">■</span> {SITE.email}
+        </a>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <h2 class="section-label">Products</h2>
+      <ul class="row-list">
+        {
+          PRODUCTS.map((product) => (
+            <li>
+              <a href={product.url} target="_blank" rel="noopener" class="leader-row">
+                <span class="label">{product.name}</span>
+                <span class="leader" aria-hidden="true" />
+                <span class="meta">
+                  {product.stats && <span>{product.stats}</span>}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="home-section">
+      <h2 class="section-label">Writing</h2>
+      <ul class="row-list">
+        {
+          notes.map((note) => (
+            <li>
+              <a href={`/notes/${note.id}/`} class="leader-row">
+                <span class="label">{note.data.title}</span>
+                <span class="leader" aria-hidden="true" />
+                <span class="meta">{formatMonthYear(note.data.date)}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</div>

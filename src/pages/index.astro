@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import HomePreview from '../components/HomePreview.astro';
+import { SITE } from '../consts';
+---
+
+<Base title={SITE.name} description={SITE.tagline}>
+  <HomePreview />
+</Base>
