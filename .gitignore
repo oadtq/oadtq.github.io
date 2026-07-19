@@ -9,10 +9,6 @@ dist/
 .env
 .env.*
 
-# deployment targets
-.vercel/
-.wrangler/
-
 # OS files
 .DS_Store
 Thumbs.db

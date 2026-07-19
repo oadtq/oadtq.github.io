@@ -1,11 +1,9 @@
 # oad.tq
 
-Personal website and notes of [Bao Tran Quoc](https://oadtq.dev), built with [Astro](https://astro.build).
+Personal website for blogging, built with [Astro](https://astro.build).
 
 - **Home:** single-page landing with intro, products, and writing
 - **Notes:** markdown-powered blog posts organized by categories
-- **Style:** minimal, IBM Plex Mono, inspired by [ivan.codes](https://www.ivan.codes/)
-- **Deployment:** static build, configured for Cloudflare Pages via `wrangler.jsonc`
 
 ## Tech stack
 
@@ -53,6 +51,14 @@ tags: [agents, infra]
 ```
 
 The home list, sidebar, RSS feed, and sitemap update automatically.
+
+## Deployment
+
+Hosted on [GitHub Pages](https://pages.github.com) at `oadtq.github.io`. Every push to
+`main` triggers `.github/workflows/deploy.yml`, which builds the static site with the
+official Astro action and publishes it to Pages. No manual steps required.
+
+Requires the repo's **Settings → Pages → Source** to be set to **GitHub Actions**.
 
 ## License
 
