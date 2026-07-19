@@ -62,4 +62,5 @@ Requires the repo's **Settings → Pages → Source** to be set to **GitHub Acti
 
 ## License
 
-Content is personal. Code is provided as-is for reference.
+Source code is licensed under the [MIT License](LICENSE). Written content
+(the notes under `src/content/`) is personal and remains copyright of the author.
