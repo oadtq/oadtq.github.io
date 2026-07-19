@@ -11,6 +11,9 @@
   --line-dotted: #d4d4d4;
   --paper: #ffffff;
 
+  /* deep blue accent — used for highlights, hovers, focus, selection */
+  --accent: #1e3a8a;
+
   --f-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   --wrap: 1240px;
@@ -30,6 +33,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 24px;
+  /* always reserve space for the scrollbar so the centered layout
+     doesn't shift left when a page (e.g. a note) is tall enough to scroll */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -43,7 +49,7 @@ body {
 }
 
 ::selection {
-  background: var(--fg);
+  background: var(--accent);
   color: var(--bg);
 }
 
@@ -53,7 +59,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--fg);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -98,18 +104,18 @@ main {
 .page-grid {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
-  gap: 40px;
-  padding-top: 24px;
+  gap: 72px;
+  padding-top: 56px;
 }
 
 .side {
   position: sticky;
-  top: 24px;
+  top: 56px;
   align-self: start;
 }
 
 .side-block + .side-block {
-  margin-top: 32px;
+  margin-top: 40px;
 }
 
 .side-title {
@@ -139,6 +145,7 @@ main {
 
 .cat.active {
   opacity: 1;
+  color: var(--accent);
 }
 
 .cat .n {
@@ -149,8 +156,8 @@ main {
 
 .subcats {
   list-style: none;
-  margin: 2px 0 8px 12px;
-  padding-left: 10px;
+  margin: 4px 0 10px 12px;
+  padding-left: 12px;
   border-left: 1px solid var(--line);
 }
 
@@ -161,7 +168,7 @@ main {
 }
 
 .subcats .cat:hover {
-  color: var(--fg);
+  color: var(--accent);
   opacity: 1;
 }
 
@@ -172,11 +179,15 @@ main {
 }
 
 .subcat-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--muted);
-  padding: 8px 0 2px;
+  padding: 10px 0 4px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+}
+
+.subcat-label:first-child {
+  padding-top: 2px;
 }
 
 .subcat-label .n {
@@ -192,12 +203,17 @@ main {
   transition: color 0.12s ease;
 }
 
+/* notes that belong to a subcategory are indented beneath its label */
+.note-link--sub {
+  padding-left: 12px;
+}
+
 .note-link:hover {
-  color: var(--fg);
+  color: var(--accent);
 }
 
 .note-link.active {
-  color: var(--fg);
+  color: var(--accent);
   font-weight: 500;
 }
 
@@ -217,11 +233,12 @@ main {
 }
 
 .home-brand:hover {
-  opacity: 0.6;
+  color: var(--accent);
+  opacity: 1;
 }
 
 .home-section {
-  margin-top: 40px;
+  margin-top: 64px;
 }
 
 .home-section:first-of-type {
@@ -243,7 +260,8 @@ main {
 }
 
 .home-lead a:hover {
-  text-decoration-color: var(--fg);
+  text-decoration-color: var(--accent);
+  color: var(--accent);
 }
 
 .home-bio {
@@ -286,7 +304,11 @@ main {
 }
 
 .leader-row:hover {
-  opacity: 0.6;
+  color: var(--accent);
+}
+
+.leader-row:hover .leader {
+  background: var(--accent);
 }
 
 .leader-row .label {
@@ -332,12 +354,12 @@ main {
 }
 
 a.chip:hover {
-  border-color: var(--fg);
-  color: var(--fg);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .chip .sq {
-  color: var(--fg);
+  color: var(--accent);
   font-size: 0.55rem;
 }
 
@@ -356,7 +378,7 @@ a.chip:hover {
 }
 
 .crumb-home:hover {
-  color: var(--fg);
+  color: var(--accent);
 }
 
 .note-title {
@@ -413,7 +435,7 @@ a.chip:hover {
   }
 
   .page-grid {
-    padding-top: 28px;
+    padding-top: 40px;
   }
 }
 

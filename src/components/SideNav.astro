@@ -39,7 +39,10 @@ const total = notes.length;
                     <li>
                       <a
                         href={`/notes/${n.id}/`}
-                        class:list={['note-link', { active: n.id === activeId }]}
+                        class:list={[
+                          'note-link',
+                          { 'note-link--sub': !!s.subcategory, active: n.id === activeId },
+                        ]}
                         aria-current={n.id === activeId ? 'page' : undefined}
                       >
                         {n.data.title}

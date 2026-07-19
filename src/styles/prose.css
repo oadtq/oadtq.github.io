@@ -73,7 +73,8 @@
 }
 
 .prose a:hover {
-  text-decoration-color: var(--fg);
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
 .prose strong {

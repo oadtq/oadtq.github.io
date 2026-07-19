@@ -51,8 +51,3 @@ export function formatDate(d: Date): string {
     .toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
     .toUpperCase();
 }
-
-export function readingTime(note: Note): number {
-  const words = note.body?.trim().split(/\s+/).length ?? 0;
-  return Math.max(1, Math.round(words / 200));
-}
