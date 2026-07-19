@@ -2,7 +2,7 @@ export const SITE = {
   name: 'oad.tq',
   realName: 'Bao',
   logotype: 'oad.tq',
-  url: 'https://oadtq.dev',
+  url: 'https://oadtq.github.io',
   tagline: 'Notes on agentic AI, inference optimization, and building startups.',
   email: 'contact.baotq@gmail.com',
   socials: {
