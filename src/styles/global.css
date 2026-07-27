@@ -101,28 +101,21 @@ main {
 
 /* ---------- page grid: left sidebar + content ---------- */
 
+/* every page shares one top offset so the sidebar and heading land in the
+   same spot on navigation — no jump between the short pages and a note */
 .page-grid {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
   gap: 72px;
-  padding-top: 56px;
+  padding-top: 140px;
 }
 
+/* the nav starts at the shared offset, then rises to a tighter one once the
+   page is scrolled far enough for it to matter */
 .side {
   position: sticky;
   top: 56px;
   align-self: start;
-}
-
-/* the three core pages hold little content, so they start further down
-   the viewport to sit nearer the optical center. Note pages are long and
-   keep the tighter default. */
-.page-grid--center {
-  padding-top: 140px;
-}
-
-.page-grid--center .side {
-  top: 140px;
 }
 
 .side-block + .side-block {
@@ -382,10 +375,6 @@ a.chip:hover {
   }
 
   .page-grid {
-    padding-top: 40px;
-  }
-
-  .page-grid--center {
     padding-top: 64px;
   }
 }
