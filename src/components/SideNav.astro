@@ -1,60 +1,29 @@
 ---
-import { getNotes, groupNotes } from '../lib/notes';
+import { NAV, type NavItem } from '../consts';
 
 interface Props {
-  activeId?: string;
+  active?: NavItem['id'];
 }
 
-const { activeId } = Astro.props;
-
-const notes = await getNotes();
-const groups = groupNotes(notes);
-const total = notes.length;
+const { active } = Astro.props;
 ---
 
 <aside class="side">
-  <div class="side-block">
-    <div class="side-title">Categories</div>
-    <ul class="cats">
-      <li>
-        <a class="cat" href="/">
-          All <span class="n">[{total}]</span>
-        </a>
-      </li>
+  <nav class="side-block" aria-label="Primary">
+    <ul class="nav-list">
       {
-        groups.map((g) => (
+        NAV.map((item) => (
           <li>
-            <span class="cat cat-static">
-              {g.category} <span class="n">[{g.count}]</span>
-            </span>
-            <ul class="subcats">
-              {g.subs.map((s) => (
-                <>
-                  {s.subcategory && (
-                    <li class="subcat-label">
-                      {s.subcategory} <span class="n">[{s.notes.length}]</span>
-                    </li>
-                  )}
-                  {s.notes.map((n) => (
-                    <li>
-                      <a
-                        href={`/notes/${n.id}/`}
-                        class:list={[
-                          'note-link',
-                          { 'note-link--sub': !!s.subcategory, active: n.id === activeId },
-                        ]}
-                        aria-current={n.id === activeId ? 'page' : undefined}
-                      >
-                        {n.data.title}
-                      </a>
-                    </li>
-                  ))}
-                </>
-              ))}
-            </ul>
+            <a
+              href={item.href}
+              class:list={['nav-link', { active: item.id === active }]}
+              aria-current={item.id === active ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
           </li>
         ))
       }
     </ul>
-  </div>
+  </nav>
 </aside>

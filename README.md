@@ -2,8 +2,11 @@
 
 Personal website for blogging, built with [Astro](https://astro.build).
 
-- **Home:** single-page landing with intro, products, and writing
-- **Notes:** markdown-powered blog posts organized by categories
+Three core pages, navigated from a text sidebar:
+
+- **oad.tq** (`/`) — about, with links out to GitHub, X, LinkedIn, and Scholar
+- **Projects** (`/projects/`) — what I'm building
+- **Writing** (`/writing/`) — markdown-powered notes, newest first
 
 ## Tech stack
 
@@ -25,13 +28,13 @@ npm run preview  # preview the built site
 
 ```
 src/
-  components/    # HomePreview, SideNav
+  components/    # SideNav
   content/       # markdown notes
   layouts/       # Base layout
   lib/           # notes helpers
   pages/         # routes
   styles/        # global.css, prose.css
-  consts.ts      # site metadata + products
+  consts.ts      # site metadata, nav, projects
   content.config.ts
 ```
 
@@ -50,7 +53,7 @@ tags: [agents, infra]
 ---
 ```
 
-The home list, sidebar, RSS feed, and sitemap update automatically.
+The Writing page, RSS feed, and sitemap update automatically.
 
 ## Deployment
 

@@ -5,7 +5,7 @@ description: Add a new note to the oad.tq personal site. Use when the user wants
 
 # Add a note
 
-Notes are markdown files in `src/content/notes/`. There is no database — the file is the content. The sidebar, home list, RSS, and sitemap all update automatically from the files in that folder.
+Notes are markdown files in `src/content/notes/`. There is no database — the file is the content. The Writing page, RSS feed, and sitemap all update automatically from the files in that folder.
 
 ## Steps
 
@@ -24,9 +24,9 @@ draft: false
 ---
 ```
 
-3. **Reuse existing categories/subcategories** before inventing new ones. Current set: `Blog` (sub: `Build in Public`), `Dev` (subs: `AI`, `Ops`), `Product` (no sub). If you genuinely need a new top-level category, also add it to `CATEGORY_ORDER` in `src/lib/notes.ts`, otherwise it sorts to the end.
+3. **Reuse existing categories/subcategories** before inventing new ones. Current set: `Blog` (sub: `Build in Public`), `Dev` (subs: `AI`, `Ops`), `Product` (no sub). They are metadata only — they feed the RSS `categories` field and are not rendered as navigation.
 4. `draft: true` hides the note from the site entirely.
-5. Verify: `npm run dev` and open http://localhost:4321 — the note must appear in the home list and the left sidebar. `npm run build` must pass before deploy.
+5. Verify: `npm run dev` and open http://localhost:4321/writing/ — the note must appear in the list, newest first. `npm run build` must pass before deploy.
 
 ## Markdown conventions (required)
 

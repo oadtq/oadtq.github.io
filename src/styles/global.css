@@ -114,134 +114,67 @@ main {
   align-self: start;
 }
 
+/* the three core pages hold little content, so they start further down
+   the viewport to sit nearer the optical center. Note pages are long and
+   keep the tighter default. */
+.page-grid--center {
+  padding-top: 140px;
+}
+
+.page-grid--center .side {
+  top: 140px;
+}
+
 .side-block + .side-block {
   margin-top: 40px;
 }
 
-.side-title {
+/* ---------- sidebar page nav ---------- */
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* text-only nav: the current page is marked by color and weight,
+   no box or background */
+.nav-link {
+  display: inline-block;
   font-size: 0.85rem;
   color: var(--muted);
-  margin-bottom: 10px;
-}
-
-/* categories */
-.cats {
-  list-style: none;
-}
-
-.cat {
-  display: block;
-  width: 100%;
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--fg);
   padding: 4px 0;
-  transition: opacity 0.12s ease;
-}
-
-.cat:hover {
-  opacity: 0.6;
-}
-
-.cat.active {
-  opacity: 1;
-  color: var(--accent);
-}
-
-.cat .n {
-  color: var(--muted);
-  font-size: 0.75rem;
-  margin-left: 2px;
-}
-
-.subcats {
-  list-style: none;
-  margin: 4px 0 10px 12px;
-  padding-left: 12px;
-  border-left: 1px solid var(--line);
-}
-
-.subcats .cat {
-  font-size: 0.8rem;
-  padding: 3px 0;
-  color: var(--muted);
-}
-
-.subcats .cat:hover {
-  color: var(--accent);
-  opacity: 1;
-}
-
-/* sidebar on note pages: category labels + note links */
-.cat-static {
-  cursor: default;
-  color: var(--fg);
-}
-
-.subcat-label {
-  font-size: 0.7rem;
-  color: var(--muted);
-  padding: 10px 0 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.subcat-label:first-child {
-  padding-top: 2px;
-}
-
-.subcat-label .n {
-  font-size: 0.7rem;
-}
-
-.note-link {
-  display: block;
-  font-size: 0.8rem;
-  line-height: 1.35;
-  color: var(--muted);
-  padding: 3px 0;
   transition: color 0.12s ease;
 }
 
-/* notes that belong to a subcategory are indented beneath its label */
-.note-link--sub {
-  padding-left: 12px;
-}
-
-.note-link:hover {
+.nav-link:hover {
   color: var(--accent);
 }
 
-.note-link.active {
+.nav-link.active {
   color: var(--accent);
   font-weight: 500;
 }
 
-/* ---------- home page ---------- */
+/* ---------- page shell ---------- */
 
-.home-main {
+.page-main {
   max-width: 680px;
 }
 
-.home-brand {
-  display: inline-block;
+.page-title {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--fg);
-  margin-bottom: 12px;
-  transition: opacity 0.12s ease;
+  margin-bottom: 28px;
 }
 
-.home-brand:hover {
-  color: var(--accent);
-  opacity: 1;
-}
-
-.home-section {
+.page-section {
   margin-top: 64px;
 }
 
-.home-section:first-of-type {
+.page-section:first-of-type {
   margin-top: 0;
 }
 
@@ -264,14 +197,6 @@ main {
   color: var(--accent);
 }
 
-.home-bio {
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: var(--muted);
-  max-width: 62ch;
-  margin-top: 16px;
-}
-
 .home-links {
   display: flex;
   gap: 10px;
@@ -280,12 +205,6 @@ main {
 }
 
 /* ---------- minimal rows with leaders (ivan.codes style) ---------- */
-
-.section-label {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
 
 .row-list {
   list-style: none;
@@ -336,6 +255,23 @@ main {
 
 .leader-row .meta span + span {
   margin-left: 10px;
+}
+
+/* ---------- projects ---------- */
+
+.proj-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.proj-desc {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 62ch;
+  margin-top: 6px;
 }
 
 /* ---------- contact chips ---------- */
@@ -424,8 +360,19 @@ a.chip:hover {
     gap: 0;
   }
 
+  /* nav is the only way around the site, so it stays visible —
+     it just flips to a horizontal row above the content */
   .side {
-    display: none;
+    position: static;
+    margin-bottom: 36px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }
 
@@ -436,6 +383,10 @@ a.chip:hover {
 
   .page-grid {
     padding-top: 40px;
+  }
+
+  .page-grid--center {
+    padding-top: 64px;
   }
 }
 

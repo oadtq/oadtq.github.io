@@ -1,9 +1,43 @@
 ---
 import Base from '../layouts/Base.astro';
-import HomePreview from '../components/HomePreview.astro';
+import SideNav from '../components/SideNav.astro';
 import { SITE } from '../consts';
 ---
 
 <Base title={SITE.name} description={SITE.tagline}>
-  <HomePreview />
+  <div class="wrap page-grid page-grid--center">
+    <SideNav active="about" />
+
+    <div class="page-main">
+      <h1 class="page-title">{SITE.name}</h1>
+
+      <section class="page-section">
+        <p class="home-lead">
+          I'm {SITE.realName} (oad in reverse). I build open-source projects in agentic AI and
+          inference optimization to make LLMs more useful and less expensive to run. In a previous
+          life, I did AI research at
+          <a
+            href="https://www.qualcomm.com/research/artificial-intelligence"
+            target="_blank"
+            rel="noopener">Qualcomm AI Research</a
+          >
+          and <a href="https://www.vinai.io/" target="_blank" rel="noopener">VinAI</a>.
+        </p>
+        <div class="home-links">
+          <a class="chip" href={SITE.socials.github} target="_blank" rel="noopener">
+            <span class="sq">■</span> GitHub ↗
+          </a>
+          <a class="chip" href={SITE.socials.x} target="_blank" rel="noopener">
+            <span class="sq">■</span> X ↗
+          </a>
+          <a class="chip" href={SITE.socials.linkedin} target="_blank" rel="noopener">
+            <span class="sq">■</span> LinkedIn ↗
+          </a>
+          <a class="chip" href={SITE.socials.scholar} target="_blank" rel="noopener">
+            <span class="sq">■</span> Scholar ↗
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
 </Base>

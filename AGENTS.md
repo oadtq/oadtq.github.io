@@ -17,36 +17,55 @@ npm run build    # build to dist/
 npm run preview  # preview dist/
 ```
 
-Always run `npm run build` before finishing work. It must produce 5 pages (index + 4 notes + RSS).
+Always run `npm run build` before finishing work. It must produce 7 pages: the 3 core
+pages (index, projects, writing) + 4 notes + RSS.
 
 ## Project structure
 
 ```
 src/
-  components/       Astro components
-    HomePreview.astro   # home page content
-    SideNav.astro       # categories sidebar (desktop only)
+  components/
+    SideNav.astro       # page nav: About / Projects / Writing
   layouts/
     Base.astro          # HTML shell, fonts, no header
   pages/
-    index.astro         # home route
+    index.astro         # About (oad.tq) — the landing route
+    projects.astro      # Projects
+    writing.astro       # Writing — flat, date-sorted note list
     notes/[slug].astro  # note route
     rss.xml.ts          # RSS feed
   styles/
     global.css          # site-wide styles
     prose.css           # note-body typography only
   content/notes/      # markdown notes
-  consts.ts           # site metadata + products
+  consts.ts           # site metadata, NAV, PROJECTS
   content.config.ts   # content collection schema
 ```
+
+## Pages
+
+The site is exactly three core pages plus note detail routes:
+
+| Page     | Route        | Content                                    |
+| -------- | ------------ | ------------------------------------------ |
+| About    | `/`          | intro paragraph + social chips             |
+| Projects | `/projects/` | `PROJECTS` from `consts.ts`, with blurbs   |
+| Writing  | `/writing/`  | all notes, newest first, with month + year |
+
+`SideNav` renders these three from `NAV` in `consts.ts` and takes an `active`
+prop (`about` \| `projects` \| `writing`). Note pages mark `writing` active.
+Add a page by extending `NAV` — don't hand-roll links.
 
 ## Design constraints
 
 - No purple gradients, no rounded corners, no AI-slop indicators
 - Keep borders and colors restrained: `#fafafa` bg, `#171717` text, `#e5e5e5` lines
-- Sidebar is hidden on mobile (max-width 1023px)
-- Home page is a single page: intro, products, writing
-- No separate About page; about content lives on the home page
+- Sidebar is the only navigation, so it stays visible on mobile — below 1023px it
+  flips to a horizontal row above the content instead of hiding
+- Nav is text-only: the current page is marked with accent color and weight, never a
+  button, box, or background fill
+- Keep each core page to one concern; don't merge Projects or Writing back into About
+- No email address anywhere in the source; contact happens through the social links
 - No heavy frameworks; no new dependencies unless truly necessary
 
 ## Adding a note
@@ -63,14 +82,14 @@ src/
    tags: [agents, infra]            # optional
    ---
    ```
-3. Reuse existing categories/subcategories. If adding a new top-level category, also update `CATEGORY_ORDER` in `src/lib/notes.ts`.
+3. Reuse existing categories/subcategories. They're metadata for the RSS feed only — no page renders them as navigation.
 4. Body headings start at `##` (no H1; the title is frontmatter).
 5. Collect source URLs under `### References` at the end, not as bare URLs at the top.
-6. Verify `npm run build` passes and the note appears on the home list and in the sidebar.
+6. Verify `npm run build` passes and the note appears on `/writing/`.
 
 ## Editing conventions
 
 - Prefer editing shared functions over duplicating logic
 - Keep diffs small; deletion over addition
 - Don't change fonts or the core color palette without explicit approval
-- Don't add a site header; navigation is the sidebar + the `oad.tq/` link on note pages
+- Don't add a site header; navigation is the sidebar + the `oad.tq/writing` link on note pages

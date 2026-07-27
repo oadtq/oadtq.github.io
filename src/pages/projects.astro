@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import SideNav from '../components/SideNav.astro';
+import { PROJECTS } from '../consts';
+---
+
+<Base title="Projects" description="Open-source projects in agentic AI and inference optimization.">
+  <div class="wrap page-grid page-grid--center">
+    <SideNav active="projects" />
+
+    <div class="page-main">
+      <h1 class="page-title">Projects</h1>
+
+      <section class="page-section">
+        <ul class="proj-list">
+          {
+            PROJECTS.map((project) => (
+              <li class="proj">
+                <a href={project.url} target="_blank" rel="noopener" class="leader-row">
+                  <span class="label">{project.name}</span>
+                  <span class="leader" aria-hidden="true" />
+                  <span class="meta">{project.repo}</span>
+                </a>
+                <p class="proj-desc">{project.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+  </div>
+</Base>

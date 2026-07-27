@@ -29,12 +29,12 @@ const { Content } = await render(note);
 
 <Base title={note.data.title} description={note.data.description} type="article">
   <div class="wrap page-grid">
-    <SideNav activeId={note.id} />
+    <SideNav active="writing" />
 
     <article class="article-col">
       <header class="note-head">
-        <a href="/" class="crumb-home" aria-label="Back to home">
-          {SITE.name}/
+        <a href="/writing/" class="crumb-home" aria-label="Back to writing">
+          {SITE.name}/writing
         </a>
         <h1 class="note-title">{note.data.title}</h1>
         <div class="note-meta">

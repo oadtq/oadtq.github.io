@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import SideNav from '../components/SideNav.astro';
+import { getNotes } from '../lib/notes';
+import { SITE } from '../consts';
+
+const notes = await getNotes();
+
+const formatMonthYear = (d: Date) =>
+  d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+---
+
+<Base title="Writing" description={SITE.tagline}>
+  <div class="wrap page-grid page-grid--center">
+    <SideNav active="writing" />
+
+    <div class="page-main">
+      <h1 class="page-title">Writing</h1>
+
+      <section class="page-section">
+        <ul class="row-list">
+          {
+            notes.map((note) => (
+              <li>
+                <a href={`/notes/${note.id}/`} class="leader-row">
+                  <span class="label">{note.data.title}</span>
+                  <span class="leader" aria-hidden="true" />
+                  <span class="meta">{formatMonthYear(note.data.date)}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+  </div>
+</Base>
