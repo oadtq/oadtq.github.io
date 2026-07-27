@@ -1,19 +1,13 @@
 /* ============================================================
    oad.tq — minimal design, inspired by ivan.codes
-   IBM Plex Mono everywhere, #fafafa background, dotted leaders
+   IBM Plex Mono everywhere, themed via CSS variables, dotted leaders
    ============================================================ */
 
+/* Colors live in themes.css — every palette sets the same tokens
+   (--bg, --paper, --fg, --muted, --line, --line-dotted, --accent and the
+   --code-* trio). Nothing below should hardcode a color. */
+
 :root {
-  --bg: #fafafa;
-  --fg: #171717;
-  --muted: #737373;
-  --line: #e5e5e5;
-  --line-dotted: #d4d4d4;
-  --paper: #ffffff;
-
-  /* deep blue accent — used for highlights, hovers, focus, selection */
-  --accent: #1e3a8a;
-
   --f-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   --wrap: 1240px;
@@ -351,9 +345,18 @@ a.chip:hover {
      it just flips to a horizontal row above the content */
   .side {
     position: static;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
     margin-bottom: 36px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--line);
+  }
+
+  .side-block + .side-block {
+    margin-top: 0;
   }
 
   .nav-list {

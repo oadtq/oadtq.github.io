@@ -1,4 +1,5 @@
 ---
+import ThemePicker from './ThemePicker.astro';
 import { NAV, type NavItem } from '../consts';
 
 interface Props {
@@ -26,4 +27,8 @@ const { active } = Astro.props;
       }
     </ul>
   </nav>
+
+  <div class="side-block side-theme">
+    <ThemePicker />
+  </div>
 </aside>

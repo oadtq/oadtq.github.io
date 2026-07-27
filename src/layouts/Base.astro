@@ -2,8 +2,11 @@
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
 import '@fontsource/ibm-plex-mono/700.css';
+import '../styles/themes.css';
 import '../styles/global.css';
-import { SITE } from '../consts';
+import { DEFAULT_THEME, SITE, THEMES, THEME_STORAGE_KEY } from '../consts';
+
+const themeIds = THEMES.map((t) => t.id);
 
 interface Props {
   title: string;
@@ -32,6 +35,18 @@ const canonical = new URL(Astro.url.pathname, SITE.url);
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary" />
     <title>{fullTitle}</title>
+    {/* applied before first paint so the chosen theme never flashes */}
+    <script
+      is:inline
+      define:vars={{ themeIds, defaultTheme: DEFAULT_THEME, storageKey: THEME_STORAGE_KEY }}
+    >
+      try {
+        const stored = localStorage.getItem(storageKey);
+        document.documentElement.dataset.theme = themeIds.includes(stored) ? stored : defaultTheme;
+      } catch {
+        document.documentElement.dataset.theme = defaultTheme;
+      }
+    </script>
   </head>
   <body>
     <main>

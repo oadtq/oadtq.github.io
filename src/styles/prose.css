@@ -136,16 +136,17 @@
   font-family: var(--f-prose-mono);
   font-size: 0.875em;
   font-weight: 500;
-  background: var(--line);
+  background: var(--code-inline-bg);
   padding: 0.12em 0.36em;
   border-radius: 4px;
-  color: var(--fg);
+  color: var(--code-inline-fg);
 }
 
 .prose pre {
   font-family: var(--f-prose-mono);
-  background: #171717;
-  color: #e5e5e5;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border: 1px solid var(--line);
   padding: 18px 20px;
   margin: 1.6em 0;
   overflow-x: auto;
@@ -183,7 +184,7 @@
 
 .prose th {
   font-weight: 600;
-  background: var(--line);
+  background: var(--paper);
 }
 
 /* ---------- misc ---------- */

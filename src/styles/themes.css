@@ -1,0 +1,163 @@
+/* ============================================================
+   themes.css — color tokens only
+   Every theme sets the same 11 variables. Nothing else in the
+   site hardcodes a color, so a theme is purely a palette swap.
+   Palettes follow the upstream editor themes they're named after.
+   ============================================================ */
+
+/* ---------- Nord (default) ----------
+   Must stay FIRST: the bare `:root` here always matches <html>, and it ties
+   on specificity with every `[data-theme='...']` selector below. Source order
+   breaks the tie, so any theme block placed above this one could never win.
+   ------------------------------------------------------------ */
+
+:root,
+[data-theme='nord'] {
+  color-scheme: dark;
+
+  --bg: #2e3440;
+  --paper: #3b4252;
+  --fg: #eceff4;
+  --muted: #a4adbe;
+  --line: #434c5e;
+  --line-dotted: #4c566a;
+  --accent: #88c0d0;
+
+  --code-bg: #272c36;
+  --code-fg: #e5e9f0;
+  --code-inline-bg: #3b4252;
+  --code-inline-fg: #8fbcbb;
+}
+
+/* ---------- GitHub Light ---------- */
+
+[data-theme='github-light'] {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --paper: #f6f8fa;
+  --fg: #1f2328;
+  --muted: #59636e;
+  --line: #d1d9e0;
+  --line-dotted: #d8dee4;
+  --accent: #0969da;
+
+  --code-bg: #f6f8fa;
+  --code-fg: #1f2328;
+  --code-inline-bg: #eff1f3;
+  --code-inline-fg: #1f2328;
+}
+
+/* ---------- GitHub Dark ---------- */
+
+[data-theme='github-dark'] {
+  color-scheme: dark;
+
+  --bg: #0d1117;
+  --paper: #151b23;
+  --fg: #e6edf3;
+  --muted: #9198a1;
+  --line: #3d444d;
+  --line-dotted: #4a515b;
+  --accent: #4493f8;
+
+  --code-bg: #151b23;
+  --code-fg: #e6edf3;
+  --code-inline-bg: #262c36;
+  --code-inline-fg: #e6edf3;
+}
+
+/* ---------- One Dark (Atom / VS Code One Dark Pro) ---------- */
+
+[data-theme='one-dark'] {
+  color-scheme: dark;
+
+  --bg: #282c34;
+  --paper: #21252b;
+  --fg: #abb2bf;
+  --muted: #7f848e;
+  --line: #3e4451;
+  --line-dotted: #4b5263;
+  --accent: #61afef;
+
+  --code-bg: #21252b;
+  --code-fg: #abb2bf;
+  --code-inline-bg: #2c313a;
+  --code-inline-fg: #e06c75;
+}
+
+/* ---------- Material (Material Theme, default dark) ---------- */
+
+[data-theme='material'] {
+  color-scheme: dark;
+
+  --bg: #263238;
+  --paper: #21333b;
+  --fg: #eeffff;
+  --muted: #8796a0;
+  --line: #37474f;
+  --line-dotted: #425b67;
+  --accent: #80cbc4;
+
+  --code-bg: #1e272c;
+  --code-fg: #eeffff;
+  --code-inline-bg: #314549;
+  --code-inline-fg: #c3e88d;
+}
+
+/* ---------- Gruvbox Dark ---------- */
+
+[data-theme='gruvbox-dark'] {
+  color-scheme: dark;
+
+  --bg: #282828;
+  --paper: #32302f;
+  --fg: #ebdbb2;
+  --muted: #a89984;
+  --line: #504945;
+  --line-dotted: #665c54;
+  --accent: #fabd2f;
+
+  --code-bg: #1d2021;
+  --code-fg: #ebdbb2;
+  --code-inline-bg: #3c3836;
+  --code-inline-fg: #fe8019;
+}
+
+/* ---------- Gruvbox Light ---------- */
+
+[data-theme='gruvbox-light'] {
+  color-scheme: light;
+
+  --bg: #fbf1c7;
+  --paper: #f2e5bc;
+  --fg: #3c3836;
+  --muted: #7c6f64;
+  --line: #d5c4a1;
+  --line-dotted: #bdae93;
+  --accent: #af3a03;
+
+  --code-bg: #f2e5bc;
+  --code-fg: #3c3836;
+  --code-inline-bg: #ebdbb2;
+  --code-inline-fg: #9d0006;
+}
+
+/* ---------- Solarized Light ---------- */
+
+[data-theme='solarized-light'] {
+  color-scheme: light;
+
+  --bg: #fdf6e3;
+  --paper: #eee8d5;
+  --fg: #073642;
+  --muted: #657b83;
+  --line: #ded8c4;
+  --line-dotted: #c8c2ae;
+  --accent: #268bd2;
+
+  --code-bg: #eee8d5;
+  --code-fg: #073642;
+  --code-inline-bg: #e4ddc8;
+  --code-inline-fg: #cb4b16;
+}

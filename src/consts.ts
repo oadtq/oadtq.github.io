@@ -24,6 +24,26 @@ export const NAV: NavItem[] = [
   { id: 'writing', label: 'Writing', href: '/writing/' },
 ];
 
+export interface Theme {
+  id: string;
+  label: string;
+}
+
+/** Order here is the order shown in the theme picker. */
+export const THEMES: Theme[] = [
+  { id: 'github-light', label: 'GitHub Light' },
+  { id: 'github-dark', label: 'GitHub Dark' },
+  { id: 'one-dark', label: 'One Dark' },
+  { id: 'material', label: 'Material' },
+  { id: 'gruvbox-dark', label: 'Gruvbox Dark' },
+  { id: 'gruvbox-light', label: 'Gruvbox Light' },
+  { id: 'nord', label: 'Nord' },
+  { id: 'solarized-light', label: 'Solarized Light' },
+];
+
+export const DEFAULT_THEME = 'nord';
+export const THEME_STORAGE_KEY = 'oadtq-theme';
+
 export interface Project {
   name: string;
   description: string;
