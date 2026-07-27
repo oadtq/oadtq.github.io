@@ -49,7 +49,6 @@ description: "One or two sentences"
 date: 2026-07-19
 category: Blog
 subcategory: Build in Public
-tags: [agents, infra]
 ---
 ```
 

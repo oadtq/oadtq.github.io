@@ -79,7 +79,6 @@ Add a page by extending `NAV` — don't hand-roll links.
    date: 2026-07-19
    category: Blog      # one of: Blog, Dev, Product
    subcategory: Build in Public   # optional
-   tags: [agents, infra]            # optional
    ---
    ```
 3. Reuse existing categories/subcategories. They're metadata for the RSS feed only — no page renders them as navigation.

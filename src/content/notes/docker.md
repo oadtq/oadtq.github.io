@@ -4,7 +4,6 @@ description: "OS-level virtualization, images vs. containers, Dockerfile and Com
 date: 2026-05-28
 category: Dev
 subcategory: Ops
-tags: [docker, devops, reference]
 ---
 
 **Docker** uses **OS-level virtualization** to package software into **containers**. It shares the host's kernel but isolates the application process.

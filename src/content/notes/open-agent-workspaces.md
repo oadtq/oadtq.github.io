@@ -4,7 +4,6 @@ description: "Deriving an open agent workspace from first principles — hosts, 
 date: 2026-07-19
 category: Blog
 subcategory: Build in Public
-tags: [agents, infrastructure, cloud]
 ---
 
 I have two Macs.

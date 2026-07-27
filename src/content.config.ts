@@ -9,7 +9,6 @@ const notes = defineCollection({
     date: z.coerce.date(),
     category: z.string(),
     subcategory: z.string().optional(),
-    tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
   }),
 });

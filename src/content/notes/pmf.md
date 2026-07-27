@@ -3,7 +3,6 @@ title: "Product–Market Fit: When the Market Starts Pulling"
 description: "Sequoia's PMF framework distilled: three archetypes, four questions, and an evidence ladder for knowing when the market pulls."
 date: 2026-06-20
 category: Product
-tags: [pmf, startups, sequoia]
 ---
 
 > **Product–market fit is not simply having a useful product. It is having the right product, for customers who care deeply, delivered through a business model that works.**

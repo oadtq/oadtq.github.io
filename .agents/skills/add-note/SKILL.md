@@ -10,7 +10,7 @@ Notes are markdown files in `src/content/notes/`. There is no database — the f
 ## Steps
 
 1. Create `src/content/notes/<slug>.md`. The filename (kebab-case, no number prefixes) becomes the URL: `/notes/<slug>/`.
-2. Add frontmatter (all fields except `subcategory`, `tags`, `draft` are required):
+2. Add frontmatter (all fields except `subcategory` and `draft` are required):
 
 ```yaml
 ---
@@ -19,7 +19,6 @@ description: "One or two sentences — shown under the title in list rows; also 
 date: YYYY-MM-DD
 category: Blog
 subcategory: Build in Public
-tags: [agents, infra]
 draft: false
 ---
 ```

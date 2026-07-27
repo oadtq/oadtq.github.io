@@ -39,18 +39,6 @@ const { Content } = await render(note);
         <h1 class="note-title">{note.data.title}</h1>
         <div class="note-meta">
           <span>{formatDate(note.data.date)}</span>
-          {
-            note.data.tags.length > 0 && (
-              <>
-                <span>·</span>
-                <span class="tags">
-                  {note.data.tags.map((t) => (
-                    <span>#{t}</span>
-                  ))}
-                </span>
-              </>
-            )
-          }
         </div>
       </header>
 

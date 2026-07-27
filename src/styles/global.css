@@ -329,12 +329,6 @@ a.chip:hover {
   color: var(--muted);
 }
 
-.note-meta .tags {
-  display: flex;
-  gap: 10px;
-  color: var(--muted);
-}
-
 .prose {
   margin-top: 32px;
 }

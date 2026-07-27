@@ -4,7 +4,6 @@ description: "Notes on OpenAI's harness engineering and Amp's agent environments
 date: 2026-07-02
 category: Dev
 subcategory: AI
-tags: [agents, engineering-process, codex]
 ---
 
 > Working notes from [OpenAI — Harness Engineering](https://openai.com/index/harness-engineering/) and [Amp — Putting an agent in an orb](https://ampcode.com/notes/putting-an-agent-in-an-orb).
