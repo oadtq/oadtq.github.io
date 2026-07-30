@@ -7,7 +7,7 @@ Four core pages, navigated from a text sidebar:
 - **oad.tq** (`/`) — about, with links out to GitHub, X, LinkedIn, and Scholar
 - **Projects** (`/projects/`) — what I'm building
 - **Writing** (`/writing/`) — markdown-powered notes, newest first
-- **Recommendations** (`/recommendations/`) — articles and videos worth your time, grouped by date
+- **Reading List** (`/reading-list/`) — articles and videos worth your time, grouped by date
 
 ## Tech stack
 
@@ -35,7 +35,7 @@ src/
   lib/           # notes helpers
   pages/         # routes
   styles/        # global.css, prose.css
-  consts.ts      # site metadata, nav, projects, recommendations
+  consts.ts      # site metadata, nav, projects, reading list
   content.config.ts
 ```
 
@@ -55,9 +55,9 @@ subcategory: Build in Public
 
 The Writing page, RSS feed, and sitemap update automatically.
 
-## Adding a recommendation
+## Adding a reading list entry
 
-Recommendations live in `RECOMMENDATIONS` in `consts.ts`, not as content files. Append to
+Reading list entries live in `READING_LIST` in `consts.ts`, not as content files. Append to
 today's group or prepend a new one with an ISO `date`; each entry carries a `title`, `url`,
 `source`, and a `comment` on why it's worth the time.
 

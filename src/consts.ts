@@ -13,7 +13,7 @@ export const SITE = {
 };
 
 export interface NavItem {
-  id: 'about' | 'projects' | 'writing' | 'recommendations';
+  id: 'about' | 'projects' | 'writing' | 'reading-list';
   label: string;
   href: string;
 }
@@ -22,7 +22,7 @@ export const NAV: NavItem[] = [
   { id: 'about', label: SITE.name, href: '/' },
   { id: 'projects', label: 'Projects', href: '/projects/' },
   { id: 'writing', label: 'Writing', href: '/writing/' },
-  { id: 'recommendations', label: 'Recommendations', href: '/recommendations/' },
+  { id: 'reading-list', label: 'Reading List', href: '/reading-list/' },
 ];
 
 export interface Theme {
@@ -69,7 +69,7 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export interface Recommendation {
+export interface ReadingItem {
   title: string;
   url: string;
   /** Publisher or author shown on the right of the row. */
@@ -78,14 +78,14 @@ export interface Recommendation {
   comment: string;
 }
 
-export interface RecommendationGroup {
+export interface ReadingGroup {
   /** ISO date the batch was recommended. Groups render newest first. */
   date: string;
-  items: Recommendation[];
+  items: ReadingItem[];
 }
 
 /** Recommended reads and videos, newest batch first. */
-export const RECOMMENDATIONS: RecommendationGroup[] = [
+export const READING_LIST: ReadingGroup[] = [
   {
     date: '2026-07-30',
     items: [

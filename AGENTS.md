@@ -18,7 +18,7 @@ npm run preview  # preview dist/
 ```
 
 Always run `npm run build` before finishing work. It must produce 5 pages: the 4 core
-pages (index, projects, writing, recommendations) + 1 note. The RSS feed is an endpoint
+pages (index, projects, writing, reading-list) + 1 note. The RSS feed is an endpoint
 and isn't included in that count.
 
 ## Project structure
@@ -33,14 +33,14 @@ src/
     index.astro         # About (oad.tq) — the landing route
     projects.astro      # Projects
     writing.astro       # Writing — flat, date-sorted note list
-    recommendations.astro  # Recommendations — links grouped by date
+    reading-list.astro  # Reading List — links grouped by date
     notes/[slug].astro  # note route
     rss.xml.ts          # RSS feed
   styles/
     global.css          # site-wide styles
     prose.css           # note-body typography only
   content/notes/      # markdown notes
-  consts.ts           # site metadata, NAV, PROJECTS, RECOMMENDATIONS
+  consts.ts           # site metadata, NAV, PROJECTS, READING_LIST
   content.config.ts   # content collection schema
 ```
 
@@ -48,15 +48,15 @@ src/
 
 The site is exactly four core pages plus note detail routes:
 
-| Page            | Route               | Content                                       |
-| --------------- | ------------------- | --------------------------------------------- |
-| About           | `/`                 | intro paragraph + social chips                |
-| Projects        | `/projects/`        | `PROJECTS` from `consts.ts`, with blurbs      |
-| Writing         | `/writing/`         | all notes, newest first, with month + year    |
-| Recommendations | `/recommendations/` | `RECOMMENDATIONS`, grouped by date            |
+| Page         | Route            | Content                                    |
+| ------------ | ---------------- | ------------------------------------------ |
+| About        | `/`              | intro paragraph + social chips             |
+| Projects     | `/projects/`     | `PROJECTS` from `consts.ts`, with blurbs   |
+| Writing      | `/writing/`      | all notes, newest first, with month + year |
+| Reading List | `/reading-list/` | `READING_LIST`, grouped by date            |
 
 `SideNav` renders these four from `NAV` in `consts.ts` and takes an `active`
-prop (`about` \| `projects` \| `writing` \| `recommendations`). Note pages mark
+prop (`about` \| `projects` \| `writing` \| `reading-list`). Note pages mark
 `writing` active.
 Add a page by extending `NAV` — don't hand-roll links.
 
@@ -68,7 +68,7 @@ Add a page by extending `NAV` — don't hand-roll links.
   flips to a horizontal row above the content instead of hiding
 - Nav is text-only: the current page is marked with accent color and weight, never a
   button, box, or background fill
-- Keep each core page to one concern; don't merge Projects, Writing, or Recommendations
+- Keep each core page to one concern; don't merge Projects, Writing, or Reading List
   back into About
 - No email address anywhere in the source; contact happens through the social links
 - No heavy frameworks; no new dependencies unless truly necessary
@@ -91,15 +91,15 @@ Add a page by extending `NAV` — don't hand-roll links.
 5. Collect source URLs under `### References` at the end, not as bare URLs at the top.
 6. Verify `npm run build` passes and the note appears on `/writing/`.
 
-## Adding a recommendation
+## Adding a reading list entry
 
-Recommendations are data, not content files. Edit `RECOMMENDATIONS` in `consts.ts`:
+Reading list entries are data, not content files. Edit `READING_LIST` in `consts.ts`:
 
 1. If today's batch already exists, append to its `items` array. Otherwise prepend a new
    group with an ISO `date`.
 2. Each entry needs `title`, `url`, `source` (publisher or author, shown on the right),
    and `comment` — a first-person sentence or two on why it's worth the time.
-3. Groups render newest first; no other page or feed consumes `RECOMMENDATIONS`.
+3. Groups render newest first; no other page or feed consumes `READING_LIST`.
 
 ## Editing conventions
 

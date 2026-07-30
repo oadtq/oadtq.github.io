@@ -253,7 +253,7 @@ main {
   gap: 32px;
 }
 
-/* shared supporting paragraph under a leader row (projects, recommendations) */
+/* shared supporting paragraph under a leader row (projects, reading list) */
 .blurb {
   font-size: 0.85rem;
   line-height: 1.65;
@@ -262,13 +262,13 @@ main {
   margin-top: 6px;
 }
 
-/* ---------- recommendations ---------- */
+/* ---------- reading list ---------- */
 
-.rec-group + .rec-group {
+.reading-group + .reading-group {
   margin-top: 56px;
 }
 
-.rec-date {
+.reading-date {
   font-size: 0.7rem;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -278,7 +278,7 @@ main {
   margin-bottom: 24px;
 }
 
-.rec-list {
+.reading-list {
   list-style: none;
   display: flex;
   flex-direction: column;

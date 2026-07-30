@@ -1,9 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import SideNav from '../components/SideNav.astro';
-import { RECOMMENDATIONS } from '../consts';
+import { READING_LIST } from '../consts';
 
-const groups = [...RECOMMENDATIONS].sort((a, b) => b.date.localeCompare(a.date));
+const groups = [...READING_LIST].sort((a, b) => b.date.localeCompare(a.date));
 
 const formatDate = (iso: string) =>
   new Date(`${iso}T00:00:00Z`)
@@ -16,25 +16,22 @@ const formatDate = (iso: string) =>
     .toUpperCase();
 ---
 
-<Base
-  title="Recommendations"
-  description="Articles and videos worth your time, with notes on why."
->
+<Base title="Reading List" description="Articles and videos worth your time, with notes on why.">
   <div class="wrap page-grid">
-    <SideNav active="recommendations" />
+    <SideNav active="reading-list" />
 
     <div class="page-main">
-      <h1 class="page-title">Recommended Resources</h1>
+      <h1 class="page-title">Reading List</h1>
 
       <section class="page-section">
         {
           groups.map((group) => (
-            <section class="rec-group">
-              <h2 class="rec-date">
+            <section class="reading-group">
+              <h2 class="reading-date">
                 <time datetime={group.date}>{formatDate(group.date)}</time>
               </h2>
 
-              <ul class="rec-list">
+              <ul class="reading-list">
                 {group.items.map((item) => (
                   <li>
                     <a href={item.url} target="_blank" rel="noopener" class="leader-row">
