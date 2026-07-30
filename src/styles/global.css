@@ -165,6 +165,15 @@ main {
   margin-top: 0;
 }
 
+/* one-line intro under a page title, above that page's content */
+.page-lead {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 62ch;
+  margin-bottom: 48px;
+}
+
 .home-lead {
   font-size: 0.95rem;
   line-height: 1.65;
