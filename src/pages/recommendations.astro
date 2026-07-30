@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import SideNav from '../components/SideNav.astro';
+import { RECOMMENDATIONS } from '../consts';
+
+const groups = [...RECOMMENDATIONS].sort((a, b) => b.date.localeCompare(a.date));
+
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`)
+    .toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      timeZone: 'UTC',
+    })
+    .toUpperCase();
+---
+
+<Base
+  title="Recommendations"
+  description="Articles and videos worth your time, with notes on why."
+>
+  <div class="wrap page-grid">
+    <SideNav active="recommendations" />
+
+    <div class="page-main">
+      <h1 class="page-title">Recommended Resources</h1>
+
+      <section class="page-section">
+        {
+          groups.map((group) => (
+            <section class="rec-group">
+              <h2 class="rec-date">
+                <time datetime={group.date}>{formatDate(group.date)}</time>
+              </h2>
+
+              <ul class="rec-list">
+                {group.items.map((item) => (
+                  <li>
+                    <a href={item.url} target="_blank" rel="noopener" class="leader-row">
+                      <span class="label">{item.title}</span>
+                      <span class="leader" aria-hidden="true" />
+                      <span class="meta">{item.source}</span>
+                    </a>
+                    <p class="blurb">{item.comment}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </section>
+    </div>
+  </div>
+</Base>

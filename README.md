@@ -2,11 +2,12 @@
 
 Personal website for blogging, built with [Astro](https://astro.build).
 
-Three core pages, navigated from a text sidebar:
+Four core pages, navigated from a text sidebar:
 
 - **oad.tq** (`/`) — about, with links out to GitHub, X, LinkedIn, and Scholar
 - **Projects** (`/projects/`) — what I'm building
 - **Writing** (`/writing/`) — markdown-powered notes, newest first
+- **Recommendations** (`/recommendations/`) — articles and videos worth your time, grouped by date
 
 ## Tech stack
 
@@ -34,7 +35,7 @@ src/
   lib/           # notes helpers
   pages/         # routes
   styles/        # global.css, prose.css
-  consts.ts      # site metadata, nav, projects
+  consts.ts      # site metadata, nav, projects, recommendations
   content.config.ts
 ```
 
@@ -53,6 +54,12 @@ subcategory: Build in Public
 ```
 
 The Writing page, RSS feed, and sitemap update automatically.
+
+## Adding a recommendation
+
+Recommendations live in `RECOMMENDATIONS` in `consts.ts`, not as content files. Append to
+today's group or prepend a new one with an ISO `date`; each entry carries a `title`, `url`,
+`source`, and a `comment` on why it's worth the time.
 
 ## Deployment
 

@@ -13,7 +13,7 @@ export const SITE = {
 };
 
 export interface NavItem {
-  id: 'about' | 'projects' | 'writing';
+  id: 'about' | 'projects' | 'writing' | 'recommendations';
   label: string;
   href: string;
 }
@@ -22,6 +22,7 @@ export const NAV: NavItem[] = [
   { id: 'about', label: SITE.name, href: '/' },
   { id: 'projects', label: 'Projects', href: '/projects/' },
   { id: 'writing', label: 'Writing', href: '/writing/' },
+  { id: 'recommendations', label: 'Recommendations', href: '/recommendations/' },
 ];
 
 export interface Theme {
@@ -55,15 +56,74 @@ export const PROJECTS: Project[] = [
   {
     name: 'MicroPC',
     description:
-      'Turns machines you control into hosts for persistent, isolated project computers. Existing coding agent CLIs run unchanged inside SmolVM microVMs, long-running work survives in tmux, and SSH over Tailscale carries commands plus loopback development routes.',
+      'One persistent, isolated computer per project, hosted on hardware you already own. Work keeps running after you disconnect, and any coding agent runs inside it unchanged.',
     url: 'https://github.com/ThePrimitiveWorks/micropc',
     repo: 'ThePrimitiveWorks/micropc',
   },
   {
-    name: 'Pi Cloud',
+    name: 'Pi Cloud Agent',
     description:
-      'A minimal, task-agnostic core for coding agents that run headless in the cloud: trigger, sandbox, harness, secret broker, actuation, observability, and profiles. Verticals like PR review arrive as profiles rather than forks of the core.',
-    url: 'https://github.com/zen8labs/pi-cloud/blob/main/VISION.md',
-    repo: 'zen8labs/pi-cloud',
+      'Open-source groundwork for agents that work in the cloud. Inspired by Pi\'s philosophy, rebuilt from first principles.',
+    url: 'https://github.com/zen8labs/pi-cloud-agent',
+    repo: 'zen8labs/pi-cloud-agent',
+  },
+];
+
+export interface Recommendation {
+  title: string;
+  url: string;
+  /** Publisher or author shown on the right of the row. */
+  source: string;
+  /** Why it's worth your time — first person, one or two sentences. */
+  comment: string;
+}
+
+export interface RecommendationGroup {
+  /** ISO date the batch was recommended. Groups render newest first. */
+  date: string;
+  items: Recommendation[];
+}
+
+/** Recommended reads and videos, newest batch first. */
+export const RECOMMENDATIONS: RecommendationGroup[] = [
+  {
+    date: '2026-07-30',
+    items: [
+      {
+        title: 'On reasoning about a product before building it',
+        url: 'https://x.com/thdxr/status/2068664103917240757',
+        source: 'dax',
+        comment:
+          "A short teardown of a product idea that is probably dead on arrival. Worth learning as a way of thinking.",
+      },
+      {
+        title: 'Harness Engineering',
+        url: 'https://openai.com/index/harness-engineering/',
+        source: 'OpenAI',
+        comment:
+          "The clearest writeup I've found on how the job changes once agents write most of the code. You stop yelling when an agent fails and start asking what was missing in the system that let it fail.",
+      },
+      {
+        title: 'The Primitive Is the Product',
+        url: 'https://www.amplifypartners.com/blog-posts/the-primitive-is-the-product',
+        source: 'Amplify Partners',
+        comment:
+          'First-principles thinking pointed at product scope. The argument I keep returning to: find the smallest irreducible unit your users actually compose with, ship that, and let the workflows be theirs rather than yours.',
+      },
+      {
+        title: 'Revisiting Clarity of Thought',
+        url: 'https://investing101.substack.com/p/revisiting-clarity-of-thought',
+        source: 'Investing 101',
+        comment:
+          "You can't decide well on a fuzzy understanding, and most bad calls are borrowed opinions nobody checked. Ask why until you hit something you know is true, then build your view back up from there.",
+      },
+      {
+        title: 'Choose Good Quests',
+        url: 'https://foundersfund.com/2023/06/choose-good-quests/',
+        source: 'Founders Fund',
+        comment:
+          'On the importance of working on hard problems when you are well-resourced. Written for people who already made it, not for me, but I read it for fun.',
+      },
+    ],
   },
 ];

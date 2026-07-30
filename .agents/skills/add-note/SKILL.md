@@ -39,6 +39,4 @@ draft: false
 
 ## Examples in repo
 
-- Original essay: `src/content/notes/open-agent-workspaces.md`
 - Distilled source note: `src/content/notes/harness-engineering.md`
-- Reference cheatsheet with tables: `src/content/notes/pmf.md`
