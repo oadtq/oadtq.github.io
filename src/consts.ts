@@ -90,6 +90,18 @@ export const READING_LIST: ReadingGroup[] = [
     date: '2026-07-30',
     items: [
       {
+        title: 'Why Compute Might Get 10x More Expensive',
+        url: 'https://www.dwarkesh.com/p/why-compute-might-get-10x-more-expensive',
+        source: 'Dwarkesh Patel',
+        comment:
+          'A very good analysis of the AI market, worth reading to learn the thinking approach behind the argument.',
+      },
+    ],
+  },
+  {
+    date: '2026-07-29',
+    items: [
+      {
         title: 'On reasoning about a product before building it',
         url: 'https://x.com/thdxr/status/2068664103917240757',
         source: 'dax',
