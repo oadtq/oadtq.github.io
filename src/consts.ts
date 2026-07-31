@@ -94,7 +94,7 @@ export const READING_LIST: ReadingGroup[] = [
         url: 'https://www.dwarkesh.com/p/why-compute-might-get-10x-more-expensive',
         source: 'Dwarkesh Patel',
         comment:
-          'A very good analysis of the AI market, worth reading to learn the thinking approach behind the argument.',
+          'A very good analysis of the AI market, worth reading to learn how he extrapolates the situation.',
       },
     ],
   },
