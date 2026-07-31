@@ -1,17 +1,40 @@
 /* ============================================================
    themes.css — color tokens only
-   Every theme sets the same 11 variables. Nothing else in the
+   Every theme sets the same 10 variables. Nothing else in the
    site hardcodes a color, so a theme is purely a palette swap.
-   Palettes follow the upstream editor themes they're named after.
+   Palettes follow the upstream editor themes they're named after, with
+   site-specific adjustments where a source accent is not readable here.
    ============================================================ */
 
-/* ---------- Nord (default) ----------
-   Must stay FIRST: the bare `:root` here always matches <html>, and it ties
-   on specificity with every `[data-theme='...']` selector below. Source order
-   breaks the tie, so any theme block placed above this one could never win.
+/* ---------- Paper (default) ----------
+   The bare `:root` fallback keeps the default available before the inline
+   theme script runs. It ties on specificity with the matching data attribute,
+   so this block must stay before the other theme blocks.
    ------------------------------------------------------------ */
 
 :root,
+[data-theme='paper'] {
+  color-scheme: light;
+
+  --bg: #e8e8e8;
+  --paper: #dcdcdc;
+  --fg: #1e1e1e;
+  --muted: #5b5b5b;
+  --line: #1e1e1e;
+  --line-dotted: #ababab;
+  /* Stripe Dev uses #c4e817 as a highlighter green. It is too low-contrast
+     for this site's links, selection, and active navigation, so Paper uses
+     a dark editorial ink instead. */
+  --accent: #3d5660;
+
+  --code-bg: #f5f5f5;
+  --code-fg: #1e1e1e;
+  --code-inline-bg: #dcdcdc;
+  --code-inline-fg: #1e1e1e;
+}
+
+/* ---------- Nord ---------- */
+
 [data-theme='nord'] {
   color-scheme: dark;
 
@@ -27,6 +50,63 @@
   --code-fg: #e5e9f0;
   --code-inline-bg: #3b4252;
   --code-inline-fg: #8fbcbb;
+}
+
+/* ---------- Night Owl (Stripe Dev) ---------- */
+
+[data-theme='night-owl'] {
+  color-scheme: dark;
+
+  --bg: #011627;
+  --paper: #0a2534;
+  --fg: #c0c7d1;
+  --muted: #5f7d97;
+  --line: #5f7d97;
+  --line-dotted: #345540;
+  --accent: #aae87b;
+
+  --code-bg: #00070d;
+  --code-fg: #c0c7d1;
+  --code-inline-bg: #0a2534;
+  --code-inline-fg: #75d1c4;
+}
+
+/* ---------- Omaha (Stripe Dev) ---------- */
+
+[data-theme='omaha'] {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --paper: #f0f0f7;
+  --fg: #00017b;
+  --muted: #4d4da3;
+  --line: #00017b;
+  --line-dotted: #d6b8d8;
+  --accent: #75147c;
+
+  --code-bg: #efeff9;
+  --code-fg: #00017b;
+  --code-inline-bg: #f0f0f7;
+  --code-inline-fg: #75147c;
+}
+
+/* ---------- CRT Mono (Stripe Dev) ---------- */
+
+[data-theme='crt-mono'] {
+  color-scheme: dark;
+
+  --bg: #090909;
+  --paper: #181818;
+  --fg: #d9d9d9;
+  --muted: #9b9b9b;
+  --line: #d9d9d9;
+  --line-dotted: #666666;
+  --accent: #d9d9d9;
+
+  --code-bg: #090909;
+  --code-fg: #d9d9d9;
+  --code-inline-bg: #181818;
+  --code-inline-fg: #d9d9d9;
 }
 
 /* ---------- GitHub Light ---------- */

@@ -32,6 +32,10 @@ export interface Theme {
 
 /** Order here is the order shown in the theme picker. */
 export const THEMES: Theme[] = [
+  { id: 'paper', label: 'Paper' },
+  { id: 'night-owl', label: 'Night Owl' },
+  { id: 'omaha', label: 'Omaha' },
+  { id: 'crt-mono', label: 'CRT Mono' },
   { id: 'github-light', label: 'GitHub Light' },
   { id: 'github-dark', label: 'GitHub Dark' },
   { id: 'one-dark', label: 'One Dark' },
@@ -42,7 +46,7 @@ export const THEMES: Theme[] = [
   { id: 'solarized-light', label: 'Solarized Light' },
 ];
 
-export const DEFAULT_THEME = 'nord';
+export const DEFAULT_THEME = 'paper';
 export const THEME_STORAGE_KEY = 'oadtq-theme';
 
 export interface Project {
