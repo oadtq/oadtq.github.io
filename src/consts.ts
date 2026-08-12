@@ -98,7 +98,7 @@ export const READING_LIST: ReadingGroup[] = [
         url: 'https://www.theatlantic.com/ideas/2026/06/ai-open-ai-anthropic/687689/',
         source: 'The Atlantic',
         comment:
-          'A sharp argument that as AI makes intelligence cheap, the scarce edge becomes wanting to think and create, knowing what matters, and enduring the hard work to pursue it.',
+          'As AI commoditizes intelligence, the scarce advantage shifts from being capable of thinking to wanting to think, wanting to create, knowing what is worth pursuing, and being willing to endure the difficulty required to pursue it.',
       },
     ],
   },

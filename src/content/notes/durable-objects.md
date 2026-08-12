@@ -18,8 +18,8 @@ After reading about celld and Cloudflare's Durable Objects, I want to unpack the
 Modern cloud architecture teaches us to make application servers stateless:
 
 ```text
-                 request
-                    ↓
+                request
+                   ↓
              Load Balancer
               /    |    \
            API-1 API-2 API-3
