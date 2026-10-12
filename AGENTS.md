@@ -17,8 +17,8 @@ npm run build    # build to dist/
 npm run preview  # preview dist/
 ```
 
-Always run `npm run build` before finishing work. It must produce 5 pages: the 4 core
-pages (index, projects, writing, reading-list) + 1 note. The RSS feed is an endpoint
+Always run `npm run build` before finishing work. It must produce 6 pages: the 5 core
+pages (index, projects, writing, reading-list, ideas) + 1 note. The RSS feed is an endpoint
 and isn't included in that count.
 
 ## Project structure

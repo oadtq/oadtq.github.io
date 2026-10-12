@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import SideNav from '../components/SideNav.astro';
+import { IDEAS } from '../consts';
+
+const groups = [...IDEAS].sort((a, b) => b.date.localeCompare(a.date));
+
+const formatMonth = (ym: string) =>
+  new Date(`${ym}-01T00:00:00Z`)
+    .toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' })
+    .toUpperCase();
+---
+
+<Base title="Ideas" description="Project ideas I'd love to build but haven't found the time for.">
+  <div class="wrap page-grid">
+    <SideNav active="ideas" />
+
+    <div class="page-main">
+      <h1 class="page-title">Ideas</h1>
+
+      <p class="page-lead">A backlog of things I'd build with more time. Take one if you like.</p>
+
+      <section class="page-section">
+        {
+          groups.map((group) => (
+            <section class="reading-group">
+              <h2 class="reading-date">
+                <time datetime={group.date}>{formatMonth(group.date)}</time>
+              </h2>
+
+              <ul class="reading-list">
+                {group.items.map((idea) => (
+                  <li>
+                    <div class="leader-row">
+                      <span class="label">{idea.name}</span>
+                    </div>
+                    <p class="blurb">{idea.pitch}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </section>
+    </div>
+  </div>
+</Base>

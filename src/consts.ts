@@ -13,7 +13,7 @@ export const SITE = {
 };
 
 export interface NavItem {
-  id: 'about' | 'projects' | 'writing' | 'reading-list';
+  id: 'about' | 'projects' | 'writing' | 'reading-list' | 'ideas';
   label: string;
   href: string;
 }
@@ -23,6 +23,7 @@ export const NAV: NavItem[] = [
   { id: 'projects', label: 'Projects', href: '/projects/' },
   { id: 'writing', label: 'Writing', href: '/writing/' },
   { id: 'reading-list', label: 'Reading List', href: '/reading-list/' },
+  { id: 'ideas', label: 'Ideas', href: '/ideas/' },
 ];
 
 export interface Theme {
@@ -151,6 +152,74 @@ export const READING_LIST: ReadingGroup[] = [
         source: 'Founders Fund',
         comment:
           'On the importance of working on hard problems when you are well-resourced. Written for people who already made it, not for me, but I read it for fun.',
+      },
+    ],
+  },
+];
+
+export interface IdeaGroup {
+  date: string; // YYYY-MM
+  items: { name: string; pitch: string }[];
+}
+
+export const IDEAS: IdeaGroup[] = [
+  {
+    date: '2026-05',
+    items: [
+      {
+        name: 'Second brain',
+        pitch:
+          'An assistant you summon from any text field with one shortcut. It already sees your screen and knows your project folders (Lark threads, docs, meetings), so you never copy-paste context into a chat window again. The UX is the product: think atat, plus a memory of all your work.',
+      },
+      {
+        name: 'Tone checker',
+        pitch:
+          'A rewrite layer between my draft and the send button, with one mode per job: announcement, discussion, product update, or turning messy bullets into a short essay. My own writing rules are built into each mode.',
+      },
+      {
+        name: 'Mentor in a box',
+        pitch:
+          'A model given a legendary founder\'s biography, interviews and stories, so it reasons the way they did. I describe my problem; it answers with what they would ask and what they once did.',
+      },
+      {
+        name: 'Voice clone for posts',
+        pitch:
+          'Feed it a writer\'s best posts and it learns their rhythm and hooks, then turns my rough notes into posts that sound natural instead of AI-written.',
+      },
+      {
+        name: 'Local review',
+        pitch:
+          'A Devin-style review UI for uncommitted changes: run it on your working tree and get the diff grouped by intent, with summaries and warnings, before any PR exists.',
+      },
+      {
+        name: 'Wiki with receipts',
+        pitch:
+          'A DeepWiki-style codebase wiki where every explanation sits next to the real code it describes. Read "how auth works" on the left and see the exact lines on the right.',
+      },
+      {
+        name: 'Video bug report',
+        pitch:
+          'Record your screen, ask "why is this broken?", and an agent describes the bug, reproduces it, writes the fix prompt, and runs the tests to prove it\'s fixed.',
+      },
+      {
+        name: 'Open-source agent box',
+        pitch:
+          'A Codex-style web UI for running coding agents on your own cheap VPS, with SSH and port forwarding so you can test the running app from your laptop. Like boxes.dev, but self-hosted.',
+      },
+      {
+        name: 'System design tutor',
+        pitch:
+          'An agent that plans a study schedule from a bank of real interview questions, teaches each concept from first principles with interactive diagrams, then quizzes and critiques your designs.',
+      },
+      {
+        name: 'Personal index fund',
+        pitch:
+          'A self-hosted agent (think Hermes Agent) that checks my stock portfolio every day and rebalances to market-cap weights, so I get a passive ETF with no fund fees and no emotional trades.',
+      },
+      {
+        name: 'Every app ships with a coding agent',
+        pitch:
+          'Any app could include a sandboxed agent that changes its own source when a user asks: "make it darker", "add a CSV export", "fix this button". Good changes can be sent back upstream as a PR.',
       },
     ],
   },
