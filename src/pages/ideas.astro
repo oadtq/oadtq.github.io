@@ -28,16 +28,22 @@ const formatMonth = (ym: string) =>
                 <time datetime={group.date}>{formatMonth(group.date)}</time>
               </h2>
 
-              <ul class="reading-list">
-                {group.items.map((idea) => (
-                  <li>
-                    <div class="leader-row">
-                      <span class="label">{idea.name}</span>
-                    </div>
-                    <p class="blurb">{idea.pitch}</p>
-                  </li>
-                ))}
-              </ul>
+              {group.topics.map((topic) => (
+                <section class="idea-topic">
+                  <h3 class="idea-topic-name">{topic.name}</h3>
+
+                  <ul class="reading-list">
+                    {topic.items.map((idea) => (
+                      <li>
+                        <div class="leader-row">
+                          <span class="label">{idea.name}</span>
+                        </div>
+                        <p class="blurb" set:html={idea.pitch} />
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
             </section>
           ))
         }

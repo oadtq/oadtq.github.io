@@ -271,6 +271,16 @@ main {
   margin-top: 6px;
 }
 
+.blurb a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.blurb a:hover {
+  color: var(--accent);
+}
+
 /* ---------- reading list ---------- */
 
 .reading-group + .reading-group {
@@ -292,6 +302,30 @@ main {
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+
+/* ---------- ideas: topics nested under a date ---------- */
+
+.idea-topic {
+  border-left: 1px solid var(--line);
+  padding-left: 20px;
+}
+
+.idea-topic + .idea-topic {
+  margin-top: 40px;
+}
+
+.idea-topic-name {
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.idea-topic-name::before {
+  content: '§ ';
+  color: var(--muted);
 }
 
 /* ---------- contact chips ---------- */
