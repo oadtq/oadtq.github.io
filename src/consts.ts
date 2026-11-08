@@ -20,10 +20,10 @@ export interface NavItem {
 
 export const NAV: NavItem[] = [
   { id: 'about', label: SITE.name, href: '/' },
-  { id: 'projects', label: 'Projects', href: '/projects/' },
+  // { id: 'projects', label: 'Projects', href: '/projects/' },
   { id: 'writing', label: 'Writing', href: '/writing/' },
   { id: 'reading-list', label: 'Reading List', href: '/reading-list/' },
-  { id: 'ideas', label: 'Ideas', href: '/ideas/' },
+  // { id: 'ideas', label: 'Ideas', href: '/ideas/' },
 ];
 
 export interface Theme {
