@@ -92,6 +92,18 @@ export interface ReadingGroup {
 /** Recommended reads and videos, newest batch first. */
 export const READING_LIST: ReadingGroup[] = [
   {
+    date: '2026-11-08',
+    items: [
+      {
+        title: 'Computer Chips Are the Most Magnificent Things Humanity Has Ever Made',
+        url: 'https://www.newyorker.com/magazine/2026/10/26/computer-chips-are-the-most-magnificent-things-weve-ever-made',
+        source: 'The New Yorker',
+        comment:
+          'Gideon Lewis-Kraus on chips as the quiet foundation of phones, cars, dishwashers, and the A.I. systems propping up the economy, and as the center of a fierce geopolitical rivalry.',
+      },
+    ],
+  },
+  {
     date: '2026-08-10',
     items: [
       {
